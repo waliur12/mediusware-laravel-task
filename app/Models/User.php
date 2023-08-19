@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'account_type',
+        'balance',
     ];
 
     /**
@@ -42,4 +44,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function userDeposit(){
+        return $this->hasMany(Transaction::class,'user_id','id')->where('transaction_type','Deposit');
+    }
+    public function userWithdrawal(){
+        return $this->hasMany(Transaction::class,'user_id','id')->where('transaction_type','Withdrawal');
+    }
+    
+    
+    public function userTransaction(){
+        return $this->hasMany(Transaction::class,'user_id','id');
+    }
 }

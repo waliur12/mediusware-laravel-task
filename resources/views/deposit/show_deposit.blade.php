@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Show All Withdrawal') }}
-                    <h4  class="float-end text-warning">Current Balance: {{ Auth::user()->balance }}</h4>
+                <div class="card-header">{{ __('Show All Deposits') }}
+                    <a href="{{route('create.deposit')}}" class="btn btn-primary float-end">Create Deposit</a>
                 </div>
 
                 <div class="card-body">
@@ -21,23 +21,19 @@
                             <th scope="col">#</th>
                             <th scope="col">Time</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Transaction Type</th>
-                            <th scope="col">Transaction Fee</th>
                             <th scope="col">Name</th>
                             <th scope="col">Amount</th>
                           </tr>
                         </thead>
                         <tbody>
 
-                          @forelse ( Auth::user()->userTransaction as $transaction)
+                          @forelse ( Auth::user()->userDeposit as $deposit)
                           <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{$transaction->created_at->format('H:i:s')}}</td>
-                            <td>{{$transaction->date->format('dS F, Y')}}</td>
-                            <td> {{$transaction->transaction_type }}</td>
-                            <td> {{$transaction->fee }}</td>
+                            <td>{{$deposit->created_at->format('H:i:s')}}</td>
+                            <td>{{$deposit->date->format('dS F, Y')}}</td>
                             <td> {{ Auth::user()->name }}</td>
-                            <td>{{$transaction->amount}}</td>
+                            <td>{{$deposit->amount}}</td>
                           </tr>
                           @empty
                             
