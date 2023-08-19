@@ -15,12 +15,20 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger" role="alert">
+                              {{ $error }}
+                          </div>
+                        @endforeach
+                    @endif
                     <table class="table table-striped">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Time</th>
                             <th scope="col">Date</th>
+                            <th scope="col">Fee</th>
                             <th scope="col">Name</th>
                             <th scope="col">Amount</th>
                           </tr>
@@ -32,6 +40,7 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{$withdraw->created_at->format('H:i:s')}}</td>
                             <td>{{$withdraw->date->format('dS F, Y')}}</td>
+                            <td>{{$withdraw->fee}}</td>
                             <td> {{ Auth::user()->name }}</td>
                             <td>{{$withdraw->amount}}</td>
                           </tr>
