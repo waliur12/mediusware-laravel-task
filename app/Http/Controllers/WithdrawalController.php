@@ -36,7 +36,7 @@ class WithdrawalController extends Controller
         $amt=$request->amount;
 
         
-        $fees = ($user_account_type === 'Individual') ? 0.0015 : 0.0025;
+        $fees = ($user_account_type === 'Individual') ? 0.00015 : 0.00025;
         // dd($fees);
 
         $auth_user=Auth::user();
@@ -65,7 +65,7 @@ class WithdrawalController extends Controller
         } elseif ($user_account_type === 'Business') { //check condition for business
             $total_amount=Transaction::where('transaction_type','Withdrawal')->sum('amount');
             if ($total_amount > 50000) {
-                $fees = 0.0015;
+                $fees = 0.00015;
                 $fee = $amt * $fees;
             }else{
                 $fee = $amt * $fees;
