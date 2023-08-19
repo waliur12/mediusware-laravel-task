@@ -43,7 +43,10 @@
                             <td>{{$deposit->amount}}</td>
                           </tr>
                           @empty
+                          <tr>
                             
+                            <td colspan="5">No transaction</td>
+                          </tr>
                           @endforelse
                           
                         </tbody>

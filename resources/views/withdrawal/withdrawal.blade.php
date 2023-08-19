@@ -45,7 +45,10 @@
                             <td>{{$withdraw->amount}}</td>
                           </tr>
                           @empty
+                          <tr>
                             
+                            <td colspan="6">No transaction</td>
+                          </tr>
                           @endforelse
                           
                         </tbody>

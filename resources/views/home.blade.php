@@ -40,7 +40,10 @@
                             <td>{{$transaction->amount}}</td>
                           </tr>
                           @empty
+                          <tr>
                             
+                            <td colspan="7">No transaction</td>
+                          </tr>
                           @endforelse
                           
                         </tbody>
